@@ -26,7 +26,7 @@
             if(
               $is-dark-theme,
               color.adjust(mat.get-color-from-palette($primary), $lightness: 25%),
-              mat.get-color-from-palette($accent)
+              mat.get-color-from-palette($primary)
             );
           background-color: if($is-dark-theme, rgba(mat.get-color-from-palette($primary), .15), transparent);
 
