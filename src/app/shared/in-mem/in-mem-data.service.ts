@@ -22,7 +22,7 @@ class JWT {
 
   getUser(req: HttpRequest<any>) {
     let token = '';
-
+    debugger;
     if (req.body?.refresh_token) {
       token = req.body.refresh_token;
     } else if (req.headers.has('Authorization')) {
@@ -85,23 +85,23 @@ function is(reqInfo: RequestInfo, path: string) {
 })
 export class InMemDataService implements InMemoryDbService {
   private users: User[] = [
-    {
-      id: 1,
-      username: 'ng-matero',
-      password: 'ng-matero',
-      name: 'Zongbin',
-      email: 'nzb329@163.com',
-      avatar: './assets/images/avatar.jpg',
-    },
-    {
-      id: 2,
-      username: 'recca0120',
-      password: 'password',
-      name: 'recca0120',
-      email: 'recca0120@gmail.com',
-      avatar: './assets/images/avatars/avatar-10.jpg',
-      refresh_token: true,
-    },
+    // {
+    //   id: 1,
+    //   username: 'ais-admin',
+    //   password: 'ais-admin',
+    //   name: 'Ankush',
+    //   email: 'ankush1802@outlook.com',
+    //   avatar: './assets/images/avatar.jpg',
+    // },
+    // {
+    //   id: 2,
+    //   username: 'recca0120',
+    //   password: 'password',
+    //   name: 'recca0120',
+    //   email: 'recca0120@gmail.com',
+    //   avatar: './assets/images/avatars/avatar-10.jpg',
+    //   refresh_token: true,
+    // },
   ];
 
   createDb(
@@ -114,6 +114,7 @@ export class InMemDataService implements InMemoryDbService {
   }
 
   get(reqInfo: RequestInfo) {
+    debugger;
     const { headers, url } = reqInfo;
 
     if (is(reqInfo, 'sanctum/csrf-cookie')) {

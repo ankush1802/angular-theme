@@ -7,6 +7,7 @@ export interface User {
   avatar?: string;
   roles?: any[];
   permissions?: any[];
+
 }
 
 export interface Token {
@@ -17,4 +18,5 @@ export interface Token {
   expires_in?: number;
   exp?: number;
   refresh_token?: string;
+
 }

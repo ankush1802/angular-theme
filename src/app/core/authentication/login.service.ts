@@ -3,15 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { Token, User } from './interface';
 import { Menu } from '@core';
 import { map } from 'rxjs/operators';
+import { ApiBaseUrls, ApiEndpoints } from 'app/api.endpoints';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
   constructor(protected http: HttpClient) {}
-
   login(username: string, password: string, rememberMe = false) {
-    return this.http.post<Token>('/auth/login', { username, password, rememberMe });
+    // return this.http.post<Token>('/auth/login', { username, password, rememberMe });
+    return this.http.post<Token>(`${ApiBaseUrls.authbaseUrl}${ApiEndpoints.Auth}`, { username, password, rememberMe });
   }
 
   refresh(params: Record<string, any>) {
@@ -27,6 +28,7 @@ export class LoginService {
   }
 
   menu() {
+    debugger;
     return this.http.get<{ menu: Menu[] }>('/me/menu').pipe(map(res => res.menu));
   }
 }

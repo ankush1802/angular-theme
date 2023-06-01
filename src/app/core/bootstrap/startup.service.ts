@@ -41,13 +41,21 @@ export class StartupService {
   }
 
   private setPermissions(user: User) {
-    // In a real app, you should get permissions and roles from the user information.
+    debugger;
+    if(user.permissions){
+       // In a real app, you should get permissions and roles from the user information.
     const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
-    this.permissonsService.loadPermissions(permissions);
+    const userPermission =user.permissions as string[];
+    this.permissonsService.loadPermissions(userPermission);
     this.rolesService.flushRoles();
     this.rolesService.addRoles({ ADMIN: permissions });
 
     // Tips: Alternatively you can add permissions with role at the same time.
     // this.rolesService.addRolesWithPermissions({ ADMIN: permissions });
+    }
+   else{
+    this.permissonsService.loadPermissions([]);
+    this.rolesService.flushRoles();
+   }
   }
 }
