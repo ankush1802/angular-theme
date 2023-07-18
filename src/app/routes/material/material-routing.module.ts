@@ -40,6 +40,7 @@ import { TableComponent } from './table/table.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { TreeComponent } from './tree/tree.component';
+import { MaterialTableComponent } from './material-table/material-table.component';
 
 const routes: Routes = [
   { path: 'autocomplete', component: AutocompleteComponent },
@@ -89,6 +90,7 @@ const routes: Routes = [
   { path: 'data-table/paginator', component: PaginatorComponent },
   { path: 'data-table/sort', component: SortComponent },
   { path: 'data-table/table', component: TableComponent },
+  { path: 'data-table/mat-table', component: MaterialTableComponent },
 ];
 
 @NgModule({

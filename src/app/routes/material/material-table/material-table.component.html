@@ -1,0 +1,50 @@
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; let i = index; columns: displayedColumns;"
+    (contextmenu)="menu.open($event, {row: row});$event.preventDefault();handleRowClick($event, row, i, menu);"
+              (click)="$event.preventDefault();handleRowClick($event, row, i);"
+              [ngClass]="{'selected': reportTableSelection.isSelected(row)}"
+    ></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>
+
+<simple-context-menu [matMenuTriggerFor]="tableContext" #menu>
+  <mat-menu #tableContext="matMenu" class="cold-context-menu">
+    <ng-template matMenuContent let-row="row">
+      <button mat-menu-item  id="coldResearchCtxMenuViewBtn">View</button>
+      <button mat-menu-item id="coldResearchCtxMenuAddViewNotesBtn">Add/View Notes</button>
+      </ng-template>
+  </mat-menu>
+</simple-context-menu>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { switchMap, tap } from 'rxjs/operators';
-import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { NgxPermissionsObject, NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 import { AuthService, User } from '@core/authentication';
 import { Menu, MenuService } from './menu.service';
 
@@ -36,19 +36,34 @@ export class StartupService {
   }
 
   private setMenu(menu: Menu[]) {
+    const permissionService = this.permissonsService;
+    let userMenu = [] as Menu[];
+    menu.forEach(function(item){
+      if(item?.code){
+      const checkPermission =  permissionService.getPermission(item.code);
+      if(checkPermission){
+        userMenu.push(item);
+      }
+    }});
     this.menuService.addNamespace(menu, 'menu');
     this.menuService.set(menu);
   }
 
   private setPermissions(user: User) {
-    debugger;
     if(user.permissions){
-       // In a real app, you should get permissions and roles from the user information.
+    const userRoles = user.roles as string[];
+    // In a real app, you should get permissions and roles from the user information.
     const permissions = ['canAdd', 'canDelete', 'canEdit', 'canRead'];
-    const userPermission =user.permissions as string[];
+    const userPermission = user.permissions as string[];
     this.permissonsService.loadPermissions(userPermission);
     this.rolesService.flushRoles();
-    this.rolesService.addRoles({ ADMIN: permissions });
+    const rolesService = this.rolesService;
+    userRoles.forEach(function(item){
+      rolesService.addRoles({ item: permissions });
+      //rolesService.addRoles({ ADMIN: permissions });
+    });
+
+
 
     // Tips: Alternatively you can add permissions with role at the same time.
     // this.rolesService.addRolesWithPermissions({ ADMIN: permissions });

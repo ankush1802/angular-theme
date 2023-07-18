@@ -23,6 +23,7 @@ export interface MenuChildrenItem {
 export interface Menu {
   route: string;
   name: string;
+  code:string;
   type: 'link' | 'sub' | 'extLink' | 'extTabLink';
   icon: string;
   label?: MenuTag;

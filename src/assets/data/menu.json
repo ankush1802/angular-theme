@@ -3,6 +3,7 @@
     {
       "route": "dashboard",
       "name": "dashboard",
+      "code": "DSBRD",
       "type": "link",
       "icon": "dashboard",
       "badge": {
@@ -253,6 +254,11 @@
             {
               "route": "table",
               "name": "table",
+              "type": "link"
+            },
+            {
+              "route": "mat-table",
+              "name": "mat-table",
               "type": "link"
             }
           ]

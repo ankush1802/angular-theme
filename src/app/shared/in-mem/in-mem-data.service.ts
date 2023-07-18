@@ -22,7 +22,6 @@ class JWT {
 
   getUser(req: HttpRequest<any>) {
     let token = '';
-    debugger;
     if (req.body?.refresh_token) {
       token = req.body.refresh_token;
     } else if (req.headers.has('Authorization')) {
@@ -114,7 +113,6 @@ export class InMemDataService implements InMemoryDbService {
   }
 
   get(reqInfo: RequestInfo) {
-    debugger;
     const { headers, url } = reqInfo;
 
     if (is(reqInfo, 'sanctum/csrf-cookie')) {

@@ -54,6 +54,7 @@ import { TableComponent } from './table/table.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { TreeComponent } from './tree/tree.component';
+import { MaterialTableComponent } from './material-table/material-table.component';
 
 const COMPONENTS: any[] = [
   AutocompleteComponent,
@@ -109,6 +110,6 @@ const COMPONENTS_DYNAMIC: any[] = [
 
 @NgModule({
   imports: [SharedModule, CdkTableModule, MaterialRoutingModule],
-  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
+  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, MaterialTableComponent],
 })
 export class MaterialModule {}

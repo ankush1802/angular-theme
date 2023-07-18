@@ -28,7 +28,6 @@ export class LoginService {
   }
 
   menu() {
-    debugger;
     return this.http.get<{ menu: Menu[] }>('/me/menu').pipe(map(res => res.menu));
   }
 }

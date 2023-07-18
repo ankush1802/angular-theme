@@ -26,7 +26,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     if (error.error?.message) {
       return error.error.message;
     }
-
+    if (error?.message) {
+      return error.message;
+    }
     if (error.error?.msg) {
       return error.error.msg;
     }
