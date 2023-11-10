@@ -54,6 +54,11 @@ const routes: Routes = [
           import('./permissions/permissions.module').then(m => m.PermissionsModule),
       },
       {
+        path: 'configurations',
+        loadChildren: () =>
+          import('./configuration/configuration.module').then(m => m.ConfigurationModule),
+      },
+      {
         path: 'utilities',
         loadChildren: () => import('./utilities/utilities.module').then(m => m.UtilitiesModule),
       },

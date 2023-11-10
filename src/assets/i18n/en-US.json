@@ -4,6 +4,8 @@
     "design": "Design",
     "design.colors": "Color System",
     "design.icons": "Material Icons",
+    "configurations":"Configurations",
+    "configurations.entities":"Entities",
     "material": "Material",
     "material.form-controls": "Form Controls",
     "material.form-controls.autocomplete": "Autocomplete",

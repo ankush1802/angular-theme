@@ -278,6 +278,11 @@
       "icon": "lock",
       "children": [
         {
+          "route": "entities",
+          "name": "entities",
+          "type": "link"
+        },
+        {
           "route": "role-switching",
           "name": "role-switching",
           "type": "link"
@@ -297,6 +302,19 @@
           "permissions": {
             "only": "ADMIN"
           }
+        }
+      ]
+    },
+    {
+      "route": "configurations",
+      "name": "configurations",
+      "type": "sub",
+      "icon": "lock",
+      "children": [
+        {
+          "route": "entities",
+          "name": "entities",
+          "type": "link"
         }
       ]
     },

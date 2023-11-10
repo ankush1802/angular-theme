@@ -1,0 +1,47 @@
+<page-header></page-header>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="Entity_Id">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Entity_Id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Entity_Title">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Entity_Title}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Entity_Active">
+      <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Entity_Active}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; let i = index; columns: displayedColumns;"
+    (contextmenu)="menu.open($event, {row: row});$event.preventDefault();handleRowClick($event, row, i, menu);"
+              (click)="$event.preventDefault();handleRowClick($event, row, i);"
+              [ngClass]="{'selected': reportTableSelection.isSelected(row)}"
+    ></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>
+
+<simple-context-menu [matMenuTriggerFor]="tableContext" #menu>
+  <mat-menu #tableContext="matMenu" class="cold-context-menu">
+    <ng-template matMenuContent let-row="row">
+      <button mat-menu-item  id="entityCtxMenuViewBtn">View</button>
+      <button mat-menu-item id="entityCtxMenuAddViewNotesBtn">Add/View Notes</button>
+      </ng-template>
+  </mat-menu>
+</simple-context-menu>
+

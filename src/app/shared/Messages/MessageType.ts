@@ -13,8 +13,10 @@ export const enum MessageType {
   MT_NetTestMsg = 55,
   MT_ConcurrentSessions,
 
-  // Common IC messages
+  // Common messages
   MT_ErrorMsg      = 100,
+  MT_GetAllEntityReqMsg,
+  MT_GetAllEntityRespMsg,
   MT_EntityReqMsg,
   MT_EntityRespMsg,
   MT_UserInfoReqMsg,
