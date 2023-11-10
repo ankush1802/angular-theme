@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/ng-matero">
-    <img width="150" src="https://avatars1.githubusercontent.com/u/49753463?s=200&v=4">
+    <img width="150" src="https://github.com/ng-matero/ng-matero/assets/20625845/65c43b2c-4c6a-49f0-8cb3-77d336815725">
   </a>
 </p>
 
@@ -41,7 +41,7 @@ Ng-Matero is an Angular admin template made with Material components.
 
 ## 📖 Documentation
 
-[English](https://nzbin.gitbook.io/ng-matero/v/en-2/) ｜[简体中文](https://nzbin.gitbook.io/ng-matero/)
+[English](https://nzbin.gitbook.io/ng-matero/v/en-2/) ｜[简体中文](https://nzbin.gitbook.io/ng-matero/v/zh-1/)
 
 ## 📦 Compatibility
 
@@ -49,12 +49,13 @@ Which version to use?
 
 | Angular | Material | Ng-Matero | Extensions |
 | ------- | -------- | --------- | ---------- |
-| v15     | v15      | 15.x.x    | 15.x.x     |
-| v14     | v14      | 14.3.0    | 14.6.4     |
+| v16     | v16      | 16.x.x    | 16.x.x     |
+| v15     | v15      | 15.3.0    | 15.5.2     |
+| v14     | v14      | 14.3.0    | 14.8.1     |
 | v13     | v13      | 13.1.1    | 13.3.2     |
-| v12     | v12      | 12.8.0    | 12.10.2    |
-| v11     | v11      | 11.3.2    | 11.5.1     |
-| v10     | v10      | 10.4.1    | 10.16.5    |
+| v12     | v12      | 12.8.0    | 12.10.3    |
+| v11     | v11      | 11.3.2    | 11.5.2     |
+| v10     | v10      | 10.4.1    | 10.16.6    |
 | v9      | v9       | 9.7.2     | 9.11.14    |
 | v8      | v8       | 0.16.0    | 0.9.3      |
 
