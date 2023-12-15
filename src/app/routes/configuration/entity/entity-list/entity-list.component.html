@@ -1,24 +1,49 @@
 <page-header></page-header>
+<form class="m-x--4">
+  <mat-form-field class="m-x-4" appearance="outline">
+    <input matInput  name="q" placeholder="Query String">
+  </mat-form-field>
 
+  <mat-form-field class="m-x-4" appearance="outline">
+    <mat-select  name="sort" placeholder="Sort">
+      <mat-option>-- None --</mat-option>
+      <mat-option value="stars">stars</mat-option>
+      <mat-option value="forks">forks</mat-option>
+      <mat-option value="updated">updated</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="m-x-4" appearance="outline">
+    <mat-select name="order" placeholder="Order">
+      <mat-option>-- None --</mat-option>
+      <mat-option value="desc">desc</mat-option>
+      <mat-option value="asc">asc</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button class="m-x-4" mat-raised-button color="primary" >Search</button>
+  <button class="m-x-4" mat-raised-button color="warn">Reset</button>
+  <button class="m-x-4" mat-raised-button color="accent" (click)="openAddEntityDialog()">Add Entity</button>
+</form>
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
 
     <!-- Position Column -->
-    <ng-container matColumnDef="Entity_Id">
+    <ng-container matColumnDef="entity_Id">
       <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Entity_Id}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.entity_Id}} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="Entity_Title">
+    <ng-container matColumnDef="entity_Title">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Entity_Title}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.entity_Title}} </mat-cell>
     </ng-container>
 
     <!-- Weight Column -->
-    <ng-container matColumnDef="Entity_Active">
+    <ng-container matColumnDef="entity_Active">
       <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Entity_Active}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.entity_Active}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

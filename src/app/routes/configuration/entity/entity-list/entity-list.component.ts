@@ -5,6 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SimpleContextMenuComponent } from '@shared/components/simple-context-menu/simple-context-menu.component';
 import { Entity } from '../entity.model';
 import { EntityService } from '../entity.service';
+import { MessageResponse } from '@shared/Models/common.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ManageEntityComponent } from '../manage-entity/manage-entity.component';
 
 @Component({
   selector: 'app-entity-list',
@@ -12,7 +15,7 @@ import { EntityService } from '../entity.service';
   styleUrls: ['./entity-list.component.scss']
 })
 export class EntityListComponent {
-  displayedColumns = ['Entity_Id', 'Entity_Title', 'Entity_Active'];
+  displayedColumns = ['entity_Id', 'entity_Title', 'entity_Active'];
   /** All retrieved reports with no filtering applied.*/
   private allEntities: Entity[] = [];
   dataSource = new MatTableDataSource<Entity>(this.allEntities);
@@ -21,11 +24,13 @@ export class EntityListComponent {
 
 
 
-  constructor(private entityProvider: EntityService) {}
+  constructor(private entityProvider: EntityService,public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.entityProvider.getAllEntities({}).subscribe((response : Entity[])=>{
-      this.allEntities = response;
+    this.entityProvider.getAllEntities({}).subscribe((response : MessageResponse)=>{
+      debugger;
+      this.allEntities = response.responses as Entity[];
+      this.dataSource.data = this.allEntities;
     });
   }
 
@@ -95,4 +100,11 @@ export class EntityListComponent {
     }
     return false;
   }
+
+
+  //#region Entity CRUD
+  openAddEntityDialog(){
+    this.dialog.open(ManageEntityComponent);
+  }
+  //#endregion
 }
