@@ -19,8 +19,7 @@
           "options": {
             "allowedCommonJsDependencies": [
               "base64-js",
-              "moment",
-              "photoviewer"
+              "moment"
             ],
             "outputPath": "dist/ais-suite-ui",
             "index": "src/index.html",
