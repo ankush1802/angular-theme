@@ -3,7 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SimpleContextMenuComponent } from '@shared/components/simple-context-menu/simple-context-menu.component';
-import { Entity } from '../entity.model';
+import { Entity, IManageEntityDialogData } from '../entity.model';
 import { EntityService } from '../entity.service';
 import { MessageResponse } from '@shared/Models/common.model';
 import { MatDialog } from '@angular/material/dialog';
@@ -104,7 +104,15 @@ export class EntityListComponent {
 
   //#region Entity CRUD
   openAddEntityDialog(){
-    this.dialog.open(ManageEntityComponent);
+    const dialog = this.dialog.open(ManageEntityComponent, {
+      width: '50rem',
+      autoFocus: false,
+      disableClose: false,
+      hasBackdrop: false,
+      data: {
+        service : this.entityProvider
+      } as IManageEntityDialogData
+    });
   }
   //#endregion
 }

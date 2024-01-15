@@ -1,3 +1,5 @@
+import { EntityService } from "./entity.service";
+
 export interface Entity{
   entity_Id : number;
   entity_Title: string;
@@ -18,4 +20,7 @@ export interface Entity{
   entity_Website?:string;
   entity_Active:boolean;
   entity_Created_date:string;
+}
+export interface IManageEntityDialogData {
+  service: EntityService;
 }
