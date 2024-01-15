@@ -10,5 +10,5 @@ export enum AuthModouleApiEndpoints {
 
 export enum EntityModouleApiEndpoints {
   GetAllEntities = 'api/EntityManager/GetEntities',
-  SaveEntity='/api/EntityManager/SaveEntity'
+  SaveEntity='api/EntityManager/SaveEntity'
 }

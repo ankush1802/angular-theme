@@ -4,12 +4,13 @@ export interface Entity{
   entity_Id : number;
   entity_Title: string;
   entity_uid : string;
-  parent_Entity_Id? : number;
+  parent_id? : number;
   entity_Sub_Title?:string;
   entity_Description?:string;
   entity_Address?:string;
   entity_City?:string;
   entity_State?:string;
+  entity_Country?:string;
   entity_Zipcode?:string;
   entity_Phone_1?:string;
   entity_Phone_2?:string;
@@ -19,8 +20,9 @@ export interface Entity{
   entity_Email_3?:string;
   entity_Website?:string;
   entity_Active:boolean;
-  entity_Created_date:string;
+  entity_CreatedOn:string;
 }
 export interface IManageEntityDialogData {
   service: EntityService;
+  entityId: number;
 }

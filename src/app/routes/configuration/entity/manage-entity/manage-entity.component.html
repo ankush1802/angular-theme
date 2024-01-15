@@ -1,1 +1,128 @@
-<p>manage-entity works!</p>
+<h2 mat-dialog-title>Manage Entity</h2>
+<form [formGroup]="entityForm" (ngSubmit)="onSaveEntity(entityForm)">
+  <mat-dialog-content>
+    <table class="ais-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Title" formControlName="entity_Title" />
+            <mat-error *ngIf="entityForm.get('entity_Title')?.hasError('required')">
+              Title is required
+            </mat-error>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>Sub Title</mat-label>
+            <input matInput placeholder="Sub Title" formControlName="entity_Sub_Title" />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <p>
+      <mat-form-field class="ais-full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="entity_Description"></textarea>
+      </mat-form-field>
+      <mat-form-field class="ais-full-width">
+        <mat-label>Address</mat-label>
+        <textarea matInput formControlName="entity_Address"></textarea>
+      </mat-form-field>
+      <mat-form-field class="ais-full-width">
+        <mat-label>Website</mat-label>
+        <textarea matInput formControlName="entity_Website"></textarea>
+      </mat-form-field>
+    </p>
+    <table class="ais-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>Phone 1</mat-label>
+            <input formControlName="entity_Phone_1" matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>Phone 2</mat-label>
+            <input formControlName="entity_Phone_2" matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>Phone 3</mat-label>
+            <input formControlName="entity_Phone_3" matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <table class="ais-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>Email 1</mat-label>
+            <input formControlName="entity_Email_1" matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>Email 2</mat-label>
+            <input formControlName="entity_Email_2" matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>Email 3</mat-label>
+            <input formControlName="entity_Email_3" matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <table class="ais-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>City</mat-label>
+            <input formControlName="entity_City" matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>State</mat-label>
+            <input formControlName="entity_State" matInput />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>Country</mat-label>
+            <input formControlName="entity_Country" matInput />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <table class="ais-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="ais-full-width">
+            <mat-label>Postal code</mat-label>
+            <input formControlName="entity_Zipcode" matInput #postalCode maxlength="5" value="" />
+            <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-slide-toggle color="primary" formControlName="entity_Active">
+            Active
+          </mat-slide-toggle>
+        </td>
+      </tr>
+    </table>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close>Close</button>
+    <button type="submit" mat-raised-button [disabled]="entityForm.invalid" color="primary">
+      Submit
+    </button>
+  </mat-dialog-actions>
+</form>
