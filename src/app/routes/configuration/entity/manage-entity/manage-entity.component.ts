@@ -72,7 +72,7 @@ export class ManageEntityComponent implements OnInit, OnDestroy {
     } as Entity;
     this.data.service.saveEntity(entity).subscribe((response: MessageResponse) => {
       debugger;
-      this.dialog.close();
+      this.dialog.close(true);
     });
   }
 }

@@ -3,30 +3,29 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SimpleContextMenuComponent } from '@shared/components/simple-context-menu/simple-context-menu.component';
-import { Entity, IManageEntityDialogData } from '../entity.model';
-import { EntityService } from '../entity.service';
 import { MessageResponse } from '@shared/Models/common.model';
 import { MatDialog } from '@angular/material/dialog';
-import { ManageEntityComponent } from '../manage-entity/manage-entity.component';
 import { Subscription } from 'rxjs';
+import { AppUser } from '../user.model';
+import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-entity-list',
-  templateUrl: './entity-list.component.html',
-  styleUrls: ['./entity-list.component.scss'],
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.scss'],
 })
-export class EntityListComponent {
+export class UserListComponent {
   /** Holds all entity subscriptions.*/
   public subscription$ = new Subscription();
   displayedColumns = ['entity_Id', 'entity_Title', 'entity_Active'];
   /** All retrieved reports with no filtering applied.*/
-  private allEntities: Entity[] = [];
-  dataSource = new MatTableDataSource<Entity>(this.allEntities);
+  private allEntities: AppUser[] = [];
+  dataSource = new MatTableDataSource<AppUser>(this.allEntities);
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   //#region Angular Life cycle
   constructor(
-    private entityProvider: EntityService,
+    private userProvider: UserService,
     public dialog: MatDialog
   ) {}
 
@@ -113,34 +112,33 @@ export class EntityListComponent {
   //#endregion
   //#region Entity CRUD
   openAddEntityDialog() {
-    const dialog = this.dialog.open(ManageEntityComponent, {
-      width: '60rem',
-      // autoFocus: false,
-      // disableClose: false,
-      // hasBackdrop: false,
-      data: {
-        service: this.entityProvider,
-        entityId: 0,
-      } as IManageEntityDialogData,
-    });
-    this.entityProvider.manageEntityDialogOpen = true;
-    this.subscription$.add(
-      dialog.afterClosed().subscribe(response => {
-        this.entityProvider.manageEntityDialogOpen = false;
-        if (response) {
-          // refresh grid
-          this.buildAndQuery();
-        }
-      })
-    );
+    // const dialog = this.dialog.open(ManageEntityComponent, {
+    //   width: '60rem',
+    //   // autoFocus: false,
+    //   // disableClose: false,
+    //   // hasBackdrop: false,
+    //   data: {
+    //     service: this.userProvider,
+    //     entityId: 0,
+    //   } as IManageEntityDialogData,
+    // });
+    // this.userProvider.manageUserDialogOpen = true;
+    // this.subscription$.add(
+    //   dialog.afterClosed().subscribe(response => {
+    //     this.userProvider.manageUserDialogOpen = false;
+    //     if (response) {
+    //       // refresh grid
+    //       this.buildAndQuery();
+    //     }
+    //   })
+    // );
   }
   buildAndQuery(){
-    debugger;
-    this.entityProvider
-    .getAllEntities({ pagenumber: 1, size: 10 })
+    this.userProvider
+    .getAllUsers({ pagenumber: 1, size: 10 })
     .subscribe((response: MessageResponse) => {
       debugger;
-      this.allEntities = response.response.entities as Entity[];
+      this.allEntities = response.response.entities as AppUser[];
       this.dataSource.data = this.allEntities;
     });
   }

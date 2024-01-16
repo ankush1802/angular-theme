@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'entities', component: EntityListComponent },
   { path: 'manage-entity', component: ManageEntityComponent },
   { path: 'manage-entity/:id', component: ManageEntityComponent },
+  { path: 'users', component: EntityListComponent },
 ];
 
 @NgModule({

@@ -315,6 +315,11 @@
           "route": "entities",
           "name": "entities",
           "type": "link"
+        },
+        {
+          "route": "users",
+          "name": "users",
+          "type": "link"
         }
       ]
     },

@@ -50,7 +50,7 @@
     <mat-row *matRowDef="let row; let i = index; columns: displayedColumns;"
     (contextmenu)="menu.open($event, {row: row});$event.preventDefault();handleRowClick($event, row, i, menu);"
               (click)="$event.preventDefault();handleRowClick($event, row, i);"
-              [ngClass]="{'selected': reportTableSelection.isSelected(row)}"
+              [ngClass]="{'selected': matTableSelection.isSelected(row)}"
     ></mat-row>
   </mat-table>
 
@@ -64,7 +64,7 @@
 <simple-context-menu [matMenuTriggerFor]="tableContext" #menu>
   <mat-menu #tableContext="matMenu" class="cold-context-menu">
     <ng-template matMenuContent let-row="row">
-      <button mat-menu-item  id="entityCtxMenuViewBtn">View</button>
+      <button mat-menu-item  id="entityCtxMenuViewBtn">Add Admin</button>
       <button mat-menu-item id="entityCtxMenuAddViewNotesBtn">Add/View Notes</button>
       </ng-template>
   </mat-menu>

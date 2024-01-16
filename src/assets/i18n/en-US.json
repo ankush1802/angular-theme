@@ -6,6 +6,7 @@
     "design.icons": "Material Icons",
     "configurations":"Configurations",
     "configurations.entities":"Entities",
+    "configurations.users":"Users",
     "material": "Material",
     "material.form-controls": "Form Controls",
     "material.form-controls.autocomplete": "Autocomplete",
