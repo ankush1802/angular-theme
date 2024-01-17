@@ -1,0 +1,27 @@
+<!-- Copied from https://github.com/angular/components/blob/master/src/material/paginator/paginator.html -->
+<!-- We only need to control page size and navigation so most of it was excluded-->
+<div class="mat-paginator-outer-container">
+  <div class="mat-paginator-container">
+    <div class="mat-paginator-page-size">
+      <div class="mat-paginator-page-size-label">Items per page:</div>
+      <mat-form-field class="mat-paginator-page-size-select" *ngIf="pageSizeOptions.length > 1">
+        <mat-select id="paginatorPageSizeSelect" [(ngModel)]="pageSize" (selectionChange)="pageSizeChange.emit(pageSize)">
+          <mat-option  *ngFor="let p of pageSizeOptions" [value]="p" [id]="'paginatorPageSizeOption'+ p">{{p}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="mat-paginator-page-size-value" *ngIf="pageSizeOptions.length <= 1">{{pageSize}}</div>
+    </div>
+    <div class="mat-paginator-range-actions">
+      <button id="paginatorBtnPrev" mat-icon-button class="mat-paginator-navigation-previous" (click)="prevPage.emit()" [disabled]="prevDisabled">
+        <svg class="mat-paginator-icon" viewBox="0 0 24 24" focusable="false">
+          <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+        </svg>
+      </button>
+      <button id="paginatorBtnNext" mat-icon-button class="mat-paginator-navigation-next" (click)="nextPage.emit()" [disabled]="nextDisabled">
+        <svg class="mat-paginator-icon" viewBox="0 0 24 24" focusable="false">
+          <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

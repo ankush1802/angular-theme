@@ -24,6 +24,7 @@ import { DisableControlDirective } from './directives/disable-control.directive'
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { ToObservablePipe } from './pipes/to-observable.pipe';
 import { SimpleContextMenuComponent } from './components/simple-context-menu/simple-context-menu.component';
+import { SimplePaginatorComponent } from './components/simple-paginator/simple-paginator.component';
 
 const MODULES: any[] = [
   CommonModule,
@@ -49,7 +50,7 @@ const PIPES: any[] = [SafeUrlPipe, ToObservablePipe];
 
 @NgModule({
   imports: [...MODULES],
-  exports: [...MODULES, ...COMPONENTS, ...DIRECTIVES, ...PIPES,SimpleContextMenuComponent],
-  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, ...DIRECTIVES, ...PIPES, SimpleContextMenuComponent],
+  exports: [...MODULES, ...COMPONENTS, ...DIRECTIVES, ...PIPES,SimpleContextMenuComponent,SimplePaginatorComponent],
+  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, ...DIRECTIVES, ...PIPES, SimpleContextMenuComponent,SimplePaginatorComponent],
 })
 export class SharedModule {}

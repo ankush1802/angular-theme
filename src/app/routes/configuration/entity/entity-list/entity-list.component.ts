@@ -62,8 +62,7 @@ export class EntityListComponent {
     // Right click.
     if (event.type === 'contextmenu') {
       if (!contextMenu) return;
-      if (!event.ctrlKey && !this.matTableSelection.isSelected(row))
-        this.matTableSelection.clear();
+      if (!event.ctrlKey && !this.matTableSelection.isSelected(row)) this.matTableSelection.clear();
       this.rangeAnchor = index;
       this.matTableSelection.select(row);
     } else if (event.ctrlKey) {
@@ -134,15 +133,25 @@ export class EntityListComponent {
       })
     );
   }
-  buildAndQuery(){
+  buildAndQuery() {
     debugger;
     this.entityProvider
-    .getAllEntities({ pagenumber: 1, size: 10 })
-    .subscribe((response: MessageResponse) => {
-      debugger;
-      this.allEntities = response.response.entities as Entity[];
-      this.dataSource.data = this.allEntities;
-    });
+      .getAllEntities({ pagenumber: this.pageIndex, size: this.pageSize })
+      .subscribe((response: MessageResponse) => {
+        debugger;
+        this.allEntities = response.response.entities as Entity[];
+        this.dataSource.data = this.allEntities;
+      });
   }
   //#endregion
+  pageSize = 10;
+  pageIndex = 1;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+  getServerData(event : any){
+    debugger;
+    console.log(event);
+    this.pageSize = event.pageSize;
+    this.pageIndex = event.pageIndex === 0 ? 1 : event.pageIndex;
+  }
+
 }
